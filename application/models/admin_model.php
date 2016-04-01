@@ -86,6 +86,22 @@ class Admin_model extends CI_Model
 		$condition = array('id' => $id);
 		$this->db->update('admin', $set, $condition);
 	}
+	public function cambiar_clave($id)
+	{
+		$where = array('id' => $id, 'clave' => $this->input->post('clave'));
+		$query = $this->db->get_where('admin', $where);
+		if ($query->num_rows() > 0)
+		{
+			$set = array('clave' => $this->input->post('nueva'));
+			$condition = array('id' => $id);
+			$this->db->update('admin', $set, $condition);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	public function eliminar($id)
 	{
 		$this->db->delete('admin', array('id' => $id));

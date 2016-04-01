@@ -156,7 +156,26 @@ class Admin extends CI_Controller
 	}
 	public function cambio()
 	{
-		# code...
+		if(!$this->input->is_ajax_request())
+		{
+			$data = array(
+				'titulo' => 'Modificar Contraseña - Funprobiani',
+				'contenido' => 'admin/modificar_clave_view'
+				);
+			$this->load->view('plantilla', $data);
+		}
+		else
+		{
+			$query = $this->admin_model->cambiar_clave($this->session->userdata('id'));
+			if ($query == false)
+			{
+				echo "La contraseña actual no es correcta";
+			}
+			else
+			{
+				echo "bien";
+			}
+		}
 	}
 	function repetido()
 	{
