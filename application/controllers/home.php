@@ -222,11 +222,37 @@ class Home extends CI_Controller
 			{
 				echo $this->input->post('email')." no se encuentra asociado a ninguna cuenta";
 			}
+			else if($query_admin != false)
+			{
+				$this->enviar_email($query_admin->nombre, $query_admin->clave);
+			}
 			else
 			{
-				echo "bien";
+				$this->enviar_email($query->nombre, $query->clave);
 			}
 		}
+	}
+	function enviar_email($nombre, $clave)
+	{
+		//Cargamos la libreria email
+		//$this->load->library('email');				
+		//Guaramos los parametros del email en una variable
+		/*$email = $this->input->post('email');
+		$asunto = "Recuperacion de Clave";
+		$msj = "<h1>Recuperación de Contraseña</h1><br>";
+		$msj .= "<p>Reciba un cordial saludo estimado <strong>". $nombre ."</strong>, recibimos una solicitud para recuperar su contraseña, a continuacion le facilitamos sus credenciales de usuario</p><br>";
+		$msj .= "<strong>E-Mail: </strong>".$email."<br>";
+		$msj .= "<strong>Contraseña: </strong>".$clave."<br><br>";*/
+		//Inicializamos la libreria
+		/*$config['mailtype'] = "html";
+		$this->email->initialize($config);*/
+		//Indicamos los parametros para el email
+		/*$this->email->from('funprobiani@gmail.com', 'Funprobiani');
+		$this->email->to($email);
+		$this->email->subject($asunto);
+		$this->email->message($msj);
+		$this->email->send();*/
+		echo "bien";
 	}
 	public function perfiles()
 	{

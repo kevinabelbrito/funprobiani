@@ -122,6 +122,29 @@ class Personas extends CI_Controller
 			}
 		}
 	}
+	public function cambio()
+	{
+		if(!$this->input->is_ajax_request())
+		{
+			$data = array(
+				'titulo' => 'Modificar Contraseña - Funprobiani',
+				'contenido' => 'personas/modificar_clave_view'
+				);
+			$this->load->view('plantilla', $data);
+		}
+		else
+		{
+			$query = $this->personas_model->cambiar_clave($this->session->userdata('id'));
+			if ($query == false)
+			{
+				echo "La contraseña actual no es correcta";
+			}
+			else
+			{
+				echo "bien";
+			}
+		}
+	}
 	function repetido()
 	{
 		echo "El E-Mail y/o la cedula ya pertenecen a otro usuario registrado";

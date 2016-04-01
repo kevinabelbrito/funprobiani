@@ -55,7 +55,7 @@
         <div class="small-16 columns" id="frontpage-il">
             <h1 class="text-center">Mucho tiempo con la misma contraseña?</h1>
             <img src="<?= base_url() ?>assets/images/illustrations/frontpage.png">
-            <a href="<?= base_url() ?>home/login" class="button radius">Cambiar Contraseña</a>
+            <a href="<?= base_url() ?>personas/cambio" class="button radius">Cambiar Contraseña</a>
         </div>
     </div>
 </section>

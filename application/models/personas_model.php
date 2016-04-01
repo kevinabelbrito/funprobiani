@@ -114,6 +114,22 @@ class Personas_model extends CI_Model
 		$condition = array('id' => $id);
 		$this->db->update('personas', $set, $condition);
 	}
+	public function cambiar_clave($id)
+	{
+		$where = array('id' => $id, 'clave' => $this->input->post('clave'));
+		$query = $this->db->get_where('personas', $where);
+		if ($query->num_rows() > 0)
+		{
+			$set = array('clave' => $this->input->post('nueva'));
+			$condition = array('id' => $id);
+			$this->db->update('personas', $set, $condition);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	public function eliminar($id)
 	{
 		$this->db->delete('personas', array('id' => $id));
